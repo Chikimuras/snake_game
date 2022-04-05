@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/app.css" />
+        <title>Snake</title>
+    </head>
+    <body>
+        <div id="loosing_box">Perdu</div>
+        <div id="main">
+            <h1>Snake</h1>
+            <p>
+                Snake est un jeu-vidéo dont le principe est de choisir la
+                direction (Haut, Bas, Droite, Gauche) d'un serpent.
+            </p>
+            <p>
+                Le but est de lui faire manger le plus de nourriture possible.
+                Pour chaque repas du serpent, il gagne en taille ce qui rend le
+                jeu de plus en plus difficile.
+            </p>
+            <p>
+                Le serpent peut passer d'un mur à l'autre et le joueur perd
+                lorsqu'il entre en collision dans sa propre queue.
+            </p>
+            <h2>Sélectionne la difficulté :</h2>
+            <div id="diffBox">
+                <button class="start-button" data-difficulty="ez">
+                    Normal
+                </button>
+                <button class="start-button" data-difficulty="diff">
+                    Difficile
+                </button>
+                <button class="start-button" data-difficulty="xtrem">
+                    Xtrem
+                </button>
+            </div>
+        </div>
+        <div id="game_panel" class="d-none">
+            <div id="score">0</div>
+
+            <canvas id="app" width="600" height="600"> </canvas>
+        </div>
+        <script src="assets/js/Food.js"></script>
+        <script src="assets/js/Block.js"></script>
+        <script src="assets/js/Snake.js"></script>
+        <script src="assets/js/app.js"></script>
+    </body>
+</html>

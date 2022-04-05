@@ -1,0 +1,111 @@
+@import 'variables.css';
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--body-font);
+    background: rgb(8, 4, 45);
+    background: linear-gradient(112deg, rgba(8, 4, 45, 1) 45%, rgba(3, 56, 56, 1) 91%);
+    color: rgb(202, 232, 247);
+}
+
+h1 {
+    font-size: 4.5rem;
+    font-family: var(--headings-font);
+    color: greenyellow;
+}
+
+h1::after {
+    display: block;
+    content: "";
+    width: 20%;
+    height: 2px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    background: rgb(0, 255, 58);
+    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(0, 255, 58, 1) 100%);
+}
+
+h1::first-letter {
+    font-size: 6rem;
+    color: red;
+}
+
+h2 {
+    font-size: 2rem;
+    font-family: var(--headings-font);
+    color: greenyellow;
+}
+
+#main {
+    max-width: 65%;
+    text-align: center;
+}
+
+canvas {
+    background: #000;
+}
+
+.d-none {
+    display: none;
+}
+
+button {
+    all: unset;
+    min-height: 3rem;
+    padding-inline: 3.5rem;
+    background: greenyellow;
+    color: red;
+    font-family: var(--headings-font);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+}
+
+button:hover {
+    background: red;
+    color: greenyellow;
+}
+
+#score {
+    text-align: center;
+    font-size: 5rem;
+    font-family: var(--headings-font);
+    color: yellowgreen;
+}
+
+#loosing_box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    top: -100vh;
+    background-color: hsla(0, 0%, 0%, 0.425);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-family: var(--headings-font);
+}
+
+#loosing_box.shown {
+    animation: slideFromTop 0.85s ease-in-out forwards;
+}
+
+@keyframes slideFromTop {
+    0% {
+        top: -100vh;
+    }
+
+    100% {
+        top: 0;
+    }
+}
