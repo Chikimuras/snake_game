@@ -24,7 +24,7 @@
             }
         }
     }
-
+    // Move the head of the snake to the new position
     moveHead() {
         const head = this.blocks[0];
         head.oldX = head.x;
@@ -51,7 +51,7 @@
             head.teleportIfOutOfBounds();
         }
     }
-
+    // Calculate the new position of the block
     calculateNewBlockPosition() {
         let { x, y } = this.blocks[this.blocks.length - 1];
         switch (currentDirection) {
@@ -73,6 +73,7 @@
         return { x, y };
     }
 
+    // Check if the snake ate a block
     eat() {
         const head = this.blocks[0];
         if (head.x === food.x && head.y === food.y) {
@@ -92,7 +93,7 @@
             score_display.innerHTML = score;
         }
     }
-
+    // Check if the block is touching the head
     blockTouchHead(block) {
         const head = this.blocks[0];
         const headX = head.x;
@@ -101,6 +102,7 @@
         return headX === block.x && headY === block.y;
     }
 
+    // Check if the snake is touching itself if not it's alive and the game continues to update the game state and draw the next frame of the game
     update() {
         this.moveHead();
         this.eat();

@@ -20,6 +20,7 @@ let currentDirection = "right";
 const startingButtons = document.querySelectorAll(".start-button");
 const main = document.getElementById("main");
 
+//Detect which key is pressed
 function deteckKeyPressed() {
     document.addEventListener("keydown", (e) => {
         e.preventDefault();
@@ -42,10 +43,12 @@ function deteckKeyPressed() {
     });
 }
 
+//Clear the screen for the next frame
 function clearScreen() {
     ctx.clearRect(0, 0, APP_SIZE, APP_SIZE);
 }
 
+//Main game loop
 function update() {
     clearScreen();
     snake.update();
@@ -62,6 +65,7 @@ function update() {
     }
 }
 
+//Init the game
 function start(difficulty) {
     switch (difficulty) {
         case "ez":
