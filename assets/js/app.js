@@ -21,30 +21,36 @@ const startingButtons = document.querySelectorAll(".start-button");
 const main = document.getElementById("main");
 
 const audio = new Audio("assets/sounds/game_music.mp3");
+const eat_sound = new Audio("assets/sounds/eat.mp3");
 audio.loop = true;
 //Detect which key is pressed
 function deteckKeyPressed() {
     document.addEventListener("keydown", (e) => {
-        e.preventDefault();
         switch (e.key) {
             case "ArrowUp":
+                e.preventDefault();
                 currentDirection = "up";
                 break;
             case "ArrowDown":
+                e.preventDefault();
                 currentDirection = "down";
                 break;
             case "ArrowLeft":
+                e.preventDefault();
                 currentDirection = "left";
                 break;
             case "ArrowRight":
+                e.preventDefault();
                 currentDirection = "right";
+                break;
+            case "Escape":
+                console.log("escape");
                 break;
             default:
                 break;
         }
     });
 }
-
 //Clear the screen for the next frame
 function clearScreen() {
     ctx.clearRect(0, 0, APP_SIZE, APP_SIZE);
@@ -84,6 +90,15 @@ function start(difficulty) {
             break;
         default:
             break;
+    }
+    if (difficulty == "xtrem") {
+        setInterval(() => {
+            while (canvas.width > 100 && canvas.height > 100) {
+                canvas.width -= 10;
+                canvas.height -= 10;
+                APP_SIZE -= 10;
+            }
+        }, 5000);
     }
     deteckKeyPressed();
     update();

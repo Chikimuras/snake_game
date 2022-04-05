@@ -89,6 +89,7 @@
                     gameSpeed -= 5;
                 }
             }
+            eat_sound.play();
             score++;
             score_display.innerHTML = score;
         }
