@@ -20,6 +20,8 @@ let currentDirection = "right";
 const startingButtons = document.querySelectorAll(".start-button");
 const main = document.getElementById("main");
 
+const audio = new Audio("assets/sounds/game_music.mp3");
+audio.loop = true;
 //Detect which key is pressed
 function deteckKeyPressed() {
     document.addEventListener("keydown", (e) => {
@@ -93,5 +95,6 @@ startingButtons.forEach((button) => {
         game_panel.classList.remove("d-none");
         difficulty = button.dataset.difficulty;
         start(button.dataset.difficulty);
+        audio.play();
     });
 });
