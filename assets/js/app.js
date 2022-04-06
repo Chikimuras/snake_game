@@ -20,9 +20,49 @@ let currentDirection = "right";
 const startingButtons = document.querySelectorAll(".start-button");
 const main = document.getElementById("main");
 
+const audio_setting = document.getElementById("audio");
+const audio_icon = document.getElementById("audio_icon");
 const audio = new Audio("assets/sounds/game_music.mp3");
 const eat_sound = new Audio("assets/sounds/eat.mp3");
+
+const dialog_box = document.getElementById("dialog_box");
+
+audio_setting.hidden = true;
 audio.loop = true;
+
+if (localStorage.getItem("audio") == "true") {
+    audio_setting.checked = true;
+    audio_icon.classList.add("fa-volume-high");
+    audio_icon.classList.remove("fa-volume-mute");
+} else {
+    audio_setting.checked = false;
+    audio_icon.classList.add("fa-volume-mute");
+    audio_icon.classList.remove("fa-volume-high");
+}
+
+audio_setting.addEventListener("click", () => {
+    if (audio_setting.checked) {
+        audio_icon.classList.add("fa-volume-high");
+        audio_icon.classList.remove("fa-volume-mute");
+        setDialogMessage("Audio enabled");
+        localStorage.setItem("audio", "true");
+    } else {
+        audio_icon.classList.add("fa-volume-mute");
+        audio_icon.classList.remove("fa-volume-high");
+        setDialogMessage("Audio disabled");
+        localStorage.setItem("audio", "false");
+    }
+});
+
+function setDialogMessage(message) {
+    dialog_box.classList.add("shown");
+    dialog_box.innerHTML = message;
+    setTimeout(() => {
+        dialog_box.classList.remove("shown");
+        dialog_box.innerHTML = "";
+    }, 2000);
+}
+
 //Detect which key is pressed
 function deteckKeyPressed() {
     document.addEventListener("keydown", (e) => {
@@ -44,7 +84,11 @@ function deteckKeyPressed() {
                 currentDirection = "right";
                 break;
             case "Escape":
-                console.log("escape");
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
                 break;
             default:
                 break;
@@ -64,7 +108,6 @@ function update() {
     if (snake.alive) {
         gameTimeout = setTimeout(update, gameSpeed);
     } else {
-        console.log("perdu");
         loosing_box.classList.add("shown");
         setTimeout(() => {
             window.location.reload();
@@ -104,12 +147,18 @@ function start(difficulty) {
     update();
 }
 
+function display_game(boxToHide, boxToShow) {
+    boxToHide.classList.add("d-none");
+    boxToShow.classList.remove("d-none");
+}
+
 startingButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        main.classList.add("d-none");
-        game_panel.classList.remove("d-none");
+        display_game(main, game_panel);
         difficulty = button.dataset.difficulty;
         start(button.dataset.difficulty);
-        audio.play();
+        if (localStorage.getItem("audio") == "true") {
+            audio.play();
+        }
     });
 });

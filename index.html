@@ -10,10 +10,15 @@
             href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
             rel="stylesheet"
         />
+        <script
+            src="https://kit.fontawesome.com/4d3061e853.js"
+            crossorigin="anonymous"
+        ></script>
         <link rel="stylesheet" href="assets/css/app.css" />
         <title>Snake</title>
     </head>
     <body>
+        <div id="dialog_box"></div>
         <div id="loosing_box">Perdu</div>
         <div id="main">
             <h1>Snake</h1>
@@ -32,7 +37,11 @@
             </p>
             <h2>Sélectionne la difficulté :</h2>
             <div id="diffBox">
-                <button class="start-button" data-difficulty="ez">
+                <button
+                    class="start-button"
+                    data-difficulty="ez"
+                    data-popover="Test"
+                >
                     Normal
                 </button>
                 <button class="start-button" data-difficulty="diff">
@@ -41,6 +50,14 @@
                 <button class="start-button" data-difficulty="xtrem">
                     Xtrem
                 </button>
+            </div>
+            <div id="settings">
+                <div id="audio_setting">
+                    <input type="checkbox" name="audio" id="audio" />
+                    <label for="audio">
+                        <i id="audio_icon" class="fa-solid fa-volume-high"></i>
+                    </label>
+                </div>
             </div>
         </div>
         <div id="game_panel" class="d-none">
