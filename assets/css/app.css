@@ -85,9 +85,10 @@ button:hover {
     font-size: 2.5rem;
 }
 
-#score {
+#scores {
     text-align: center;
-    font-size: 5rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.2rem;
     font-family: var(--headings-font);
     color: yellowgreen;
 }

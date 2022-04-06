@@ -11,6 +11,13 @@ let difficulty;
 let score = 0;
 
 const score_display = document.getElementById("score");
+const highscore_display = document.getElementById("highscore");
+const highscore = localStorage.getItem("highscore");
+if (highscore) {
+    highscore_display.innerHTML = highscore;
+} else {
+    highscore_display.innerHTML = 0;
+}
 const loosing_box = document.getElementById("loosing_box");
 
 const snake = new Snake(BLOCK_SIZE);
@@ -108,6 +115,9 @@ function update() {
     if (snake.alive) {
         gameTimeout = setTimeout(update, gameSpeed);
     } else {
+        if (localStorage.getItem("highscore") < score) {
+            localStorage.setItem("highscore", score);
+        }
         loosing_box.classList.add("shown");
         setTimeout(() => {
             window.location.reload();
