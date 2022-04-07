@@ -10,6 +10,3 @@ Pour m'amuser j'ai passer deux heure à coder ce petit snake en pure JS : [Vous 
 -   ~~Afficher le highscore du joueur~~
 -   Ajout de plusieurs types de nourriture
 -   Menu pause
-
-Jeu construit a l'occasion d'un tp.
-Collab : [@kw4z](https://github.com/kw4z)
